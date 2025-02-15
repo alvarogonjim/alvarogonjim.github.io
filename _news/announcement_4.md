@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2023-09-08 15:59:00-0400
+date: 2025-02-14 15:59:00-0400
 inline: true
 ---
-I have received the **Best Paper Award at MICCAI 2023** for our work [Robust T-Loss for Medical Image Segmentation](https://robust-tloss.github.io). 
-
-
+Simone Lionetti and I have presented our first tutorial on [Hyperbolic Learning
+in Action](https://digital-dermatology.github.io/hyperbolic-learning-tutorial/)
+at the [EMLD@EPFL](https://2025.appliedmldays.org/)
