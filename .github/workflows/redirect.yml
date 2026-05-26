@@ -1,0 +1,50 @@
+name: Deploy redirect
+
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/redirect.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Generate redirect site
+        run: |
+          mkdir -p _site
+          cat > _site/index.html <<'HTML'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <title>Redirecting…</title>
+            <meta http-equiv="refresh" content="0; url=https://alvarogj.com/">
+            <link rel="canonical" href="https://alvarogj.com/">
+            <script>window.location.replace("https://alvarogj.com/");</script>
+          </head>
+          <body>
+            <p>This site has moved. Redirecting to <a href="https://alvarogj.com/">alvarogj.com</a>…</p>
+          </body>
+          </html>
+          HTML
+          cp _site/index.html _site/404.html
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy to Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
