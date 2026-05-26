@@ -1,3 +1,8 @@
+    <!-- Redirect to personal portfolio -->
+    <meta http-equiv="refresh" content="0; url=https://alvarogj.com/">
+    <link rel="canonical" href="https://alvarogj.com/">
+    <script>window.location.replace("https://alvarogj.com/");</script>
+
     <!-- Metadata, OpenGraph and Schema.org -->
     {% include metadata.html %}
 
@@ -25,7 +30,6 @@
     <link rel="shortcut icon" href="{{ site.icon | prepend: '/assets/img/' | relative_url}}"/>
     {% endif %}
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
 
     <!-- Dark Mode -->
     {% if site.enable_darkmode %}
