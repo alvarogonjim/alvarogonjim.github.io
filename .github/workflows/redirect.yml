@@ -3,7 +3,6 @@ name: Deploy redirect
 on:
   push:
     branches: [main]
-    paths: [".github/workflows/redirect.yml"]
   workflow_dispatch:
 
 permissions:
